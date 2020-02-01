@@ -18,6 +18,7 @@ public class LevelController : Singleton<LevelController>
 	protected GameplayStatus gameplayStatus = GameplayStatus.Stopped;
 
 	protected List<ActiveElement> activeElements = new List<ActiveElement>();
+	protected List<ConnectorBase> connectors = new List<ConnectorBase>();
 	private bool _simulationRunning = false;
 
 	public bool simulationRunning
@@ -36,6 +37,18 @@ public class LevelController : Singleton<LevelController>
 	public void RegisterActiveElement(ActiveElement activeElement)
 	{
 		activeElements.Add(activeElement);
+	}
+
+	public void RegisterConnector(ConnectorBase connector, bool register = true)
+	{
+		if (register)
+		{
+			connectors.Add(connector);
+		}
+		else
+		{
+			connectors.Remove(connector);
+		}
 	}
 
 	public void FailLevel()
@@ -70,11 +83,16 @@ public class LevelController : Singleton<LevelController>
 		for (int i = 0; i < activeElements.Count; ++i)
 		{
 			ActiveElement nextElement = activeElements[i];
-			nextElement.rigidbody2DCached.simulated = run;
+			nextElement.RunSimulation(true);
 			if(!run)
 			{
 				nextElement.Reset();
 			}
+		}
+
+		for (int i = 0; i < connectors.Count; ++i )
+		{
+			connectors[i].RunSimulation(run);
 		}
 	}
 	
