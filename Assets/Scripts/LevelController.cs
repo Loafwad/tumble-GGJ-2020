@@ -13,9 +13,9 @@ public enum GameplayStatus
 public class LevelController : Singleton<LevelController>
 {
 	public float secondsToPass = 5f;
-	protected float secondsPassed = 0f;
+    protected float secondsPassed = 0;
 
-	protected GameplayStatus gameplayStatus = GameplayStatus.Stopped;
+    protected GameplayStatus gameplayStatus = GameplayStatus.Stopped;
 
 	protected List<ActiveElement> activeElements = new List<ActiveElement>();
 	protected List<ConnectorBase> connectors = new List<ConnectorBase>();
@@ -29,10 +29,18 @@ public class LevelController : Singleton<LevelController>
 		}
 	}
 
-	protected LevelController()
-	{
+	private LevelManager levelManager;
 
-	}
+    public float getsecondspassed()
+    {
+        return secondsPassed;
+    }
+
+	private void Awake()
+    {
+        levelManager = GetComponent<LevelManager>();
+    }
+
 
 	public void RegisterActiveElement(ActiveElement activeElement)
 	{
@@ -67,6 +75,8 @@ public class LevelController : Singleton<LevelController>
 			gameplayStatus = GameplayStatus.Success;
 			Debug.Log("Success");
 		}
+
+        levelManager.NextScene();
 	}
 
 	public void RunSimulation(bool run)
