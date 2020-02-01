@@ -128,8 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectorsPositions:
-  - {x: -0.7, y: 0}
-  - {x: 0.7, y: 0}
+  - {x: -0.25, y: 0}
+  - {x: 0.25, y: 0}
+  maxDragDistance: 1
 --- !u!50 &7988610526571803446
 Rigidbody2D:
   serializedVersion: 4
