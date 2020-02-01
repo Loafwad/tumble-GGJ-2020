@@ -11,14 +11,14 @@ public class ConnectorBaseEditior : Editor
 
 		for (int i = 0; i < connector.connectorsPositions.Count; ++i)
 		{
-			Vector3 nextPosition = connector.connectorsPositions[i];
+			Vector3 nextPosition = connector.transform.TransformPoint(connector.connectorsPositions[i]);
 
 			EditorGUI.BeginChangeCheck();
-			Vector3 newPosition = Handles.PositionHandle(nextPosition + connector.transform.position, Quaternion.identity);
+			Vector3 newPosition = Handles.PositionHandle(nextPosition, Quaternion.identity);
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(connector, "Connector moved");
-				connector.connectorsPositions[i] = newPosition - connector.transform.position;
+				connector.connectorsPositions[i] = newPosition -  connector.transform.position;
 			}
 		}
 	}
