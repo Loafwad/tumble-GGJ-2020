@@ -12,6 +12,7 @@ public enum ConnectorState
 public class ConnectorBase : MonoBehaviour
 {
 	public List<Vector2> connectorsPositions;
+	public Sprite icon;
 	protected ConnectorState connectorState = ConnectorState.Inactivated;
 	protected Vector2 originalPosition;
 	protected Quaternion originalRotation;

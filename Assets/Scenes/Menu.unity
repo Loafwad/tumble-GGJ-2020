@@ -261,8 +261,9 @@ GameObject:
   - component: {fileID: 390284303}
   - component: {fileID: 390284305}
   - component: {fileID: 390284304}
+  - component: {fileID: 390284306}
   m_Layer: 5
-  m_Name: Background-Right
+  m_Name: Background-Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,6 +324,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390284302}
   m_CullTransparentMesh: 0
+--- !u!114 &390284306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390284302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 75, y: 75}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &564273882
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +359,7 @@ GameObject:
   - component: {fileID: 564273885}
   - component: {fileID: 564273883}
   - component: {fileID: 564273884}
+  - component: {fileID: 564273886}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -380,6 +406,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564273886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564273882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123fea205937dd94eb31b8382c65f7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectorInfoList:
+  - item: {fileID: 5837079537745631063, guid: dc8d12696bf171841a117c06248d814c, type: 3}
+    amount: 1
+  - item: {fileID: 5837079537745631063, guid: dc8d12696bf171841a117c06248d814c, type: 3}
+    amount: 7
+  - item: {fileID: 5837079537745631063, guid: dc8d12696bf171841a117c06248d814c, type: 3}
+    amount: 5
+  - item: {fileID: 5837079537745631063, guid: dc8d12696bf171841a117c06248d814c, type: 3}
+    amount: 2
+  connectorInfoListCurrent: []
 --- !u!1 &837879380
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +442,7 @@ GameObject:
   - component: {fileID: 837879381}
   - component: {fileID: 837879385}
   - component: {fileID: 837879386}
+  - component: {fileID: 837879387}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -496,6 +545,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelController: {fileID: 564273883}
   buttonText: {fileID: 846213263}
+  canvas: {fileID: 837879383}
+  UiContainer: {fileID: 2710832532422161391, guid: a2b4d545ce4371447b7d73073689c1ba,
+    type: 3}
 --- !u!114 &837879386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +562,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1718243605}
   maxValue: 100
+--- !u!114 &837879387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837879380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca1dd8b193b27b48b2ba79f831433a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textElement: {fileID: 0}
 --- !u!1 &841640051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +1291,7 @@ GameObject:
   - component: {fileID: 1269078441}
   - component: {fileID: 1269078440}
   m_Layer: 5
-  m_Name: Background-Left
+  m_Name: Background-Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
