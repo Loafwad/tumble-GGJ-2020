@@ -11,8 +11,8 @@ public class UIHelper : MonoBehaviour
     //play & stop button
     public void PlayButton()
     {
-        levelController.RunSimulation(!levelController._simulationRunning);
-        if (!levelController._simulationRunning)
+        levelController.RunSimulation(!levelController.simulationRunning);
+        if (!levelController.simulationRunning)
         {
             buttonText.text = "Play";
         }

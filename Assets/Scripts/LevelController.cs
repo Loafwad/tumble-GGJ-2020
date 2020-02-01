@@ -18,7 +18,7 @@ public class LevelController : Singleton<LevelController>
     protected GameplayStatus gameplayStatus = GameplayStatus.Stopped;
 
 	protected List<ActiveElement> activeElements = new List<ActiveElement>();
-	public bool _simulationRunning = false;
+	protected bool _simulationRunning = false;
 
     private LevelManager levelManager;
 
@@ -26,12 +26,12 @@ public class LevelController : Singleton<LevelController>
     {
         levelManager = GetComponent<LevelManager>();
     }
-
+	
     public float getsecondspassed()
     {
         return secondsPassed;
     }
-
+	
     public bool simulationRunning
 	{
 		get
