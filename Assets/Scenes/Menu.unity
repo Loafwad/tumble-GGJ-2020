@@ -281,7 +281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsToPass: 3
-  _simulationRunning: 0
 --- !u!114 &564273884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,11 +792,6 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1899034953037135515, guid: 124ac2a891435994e805c4f3dd2d050a,
-        type: 3}
-      propertyPath: m_Simulated
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 124ac2a891435994e805c4f3dd2d050a, type: 3}
 --- !u!1 &1060792360
@@ -1297,11 +1291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CollisionDetection
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1899034953037135515, guid: 124ac2a891435994e805c4f3dd2d050a,
-        type: 3}
-      propertyPath: m_Simulated
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 124ac2a891435994e805c4f3dd2d050a, type: 3}
