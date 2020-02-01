@@ -13,14 +13,22 @@ public enum GameplayStatus
 public class LevelController : Singleton<LevelController>
 {
 	public float secondsToPass = 5f;
-    protected float secondsPassed = 0;
+    protected float _secondsPassed = 0;
 
-    protected GameplayStatus gameplayStatus = GameplayStatus.Stopped;
+	public float secondspassed
+	{
+		get
+		{
+			return _secondsPassed;
+		}
+	}
+
+	private LevelManager levelManager;
+	protected GameplayStatus gameplayStatus = GameplayStatus.Stopped;
 
 	protected List<ActiveElement> activeElements = new List<ActiveElement>();
 	protected List<ConnectorBase> connectors = new List<ConnectorBase>();
 	private bool _simulationRunning = false;
-
 	public bool simulationRunning
 	{
 		get
@@ -28,13 +36,6 @@ public class LevelController : Singleton<LevelController>
 			return _simulationRunning;
 		}
 	}
-
-	private LevelManager levelManager;
-
-    public float getsecondspassed()
-    {
-        return secondsPassed;
-    }
 
 	private void Awake()
     {
@@ -86,7 +87,7 @@ public class LevelController : Singleton<LevelController>
 
 		if(!run)
 		{
-			secondsPassed = 0f;
+			_secondsPassed = 0f;
 		}
 
 		// Reset level state to default
@@ -111,8 +112,8 @@ public class LevelController : Singleton<LevelController>
 		// Increase the time first, so it doesn't always start increased when starting
 		if (_simulationRunning && gameplayStatus == GameplayStatus.Running)
 		{
-			secondsPassed += Time.deltaTime;
-			if(secondsPassed >= secondsToPass)
+			_secondsPassed += Time.deltaTime;
+			if(_secondsPassed >= secondsToPass)
 			{
 				FinishLevel();
 			}
