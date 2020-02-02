@@ -19,12 +19,16 @@ public class UIHelper : Singleton<UIHelper>
 	public Animator WinTextAnimation;
 	public Animator WinButtonAnimation;
 
+	public GameObject PlayButtonUI;
+	public GameObject RewindButtonUI;
+
 	public GameObject failLevelScreen;
 
 	//play & stop button
 	public void PlayButton()
     {
 		LevelController.instance.RunSimulation(!LevelController.instance.simulationRunning);
+		ChangePlayButtonSprite();
         if (!LevelController.instance.simulationRunning)
         {
             buttonText.text = "Play";
@@ -35,6 +39,19 @@ public class UIHelper : Singleton<UIHelper>
         }
     }
 
+	public void ChangePlayButtonSprite()
+	{
+		if (LevelController.instance.simulationRunning)
+		{
+			PlayButtonUI.SetActive(false);
+			RewindButtonUI.SetActive(true);
+		}
+		else
+		{
+			PlayButtonUI.SetActive(true);
+			RewindButtonUI.SetActive(false);
+		}
+	}
 	public void LoadNextLevel()
 	{
 		LevelController.instance.GetComponent<LevelManager>().NextScene();
@@ -62,6 +79,10 @@ public class UIHelper : Singleton<UIHelper>
 	{
 		GameObject newElement = Instantiate(UiContainer, canvas.transform.Find("Background-Left"));
 		containerList.Add(newElement);
+		var buttonConnector = newElement.GetComponent<ButtonConnector>();
+		var connectorBase = ConnectorController.instance.connectorInfoListCurrent[id].item.GetComponent<ConnectorBase>();
+		buttonConnector.id = id;
+		buttonConnector.icon.sprite = connectorBase.icon;
 		newElement.GetComponent<ButtonConnector>().id = id;
 	}
 
@@ -101,5 +122,6 @@ public class UIHelper : Singleton<UIHelper>
 	{
 		winLevelScreen.SetActive(false);
 		failLevelScreen.SetActive(false);
+		ChangePlayButtonSprite();
 	}
 }
