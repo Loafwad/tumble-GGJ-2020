@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: -3780519841159095715, guid: ec8f7a9c3c0358a41bd8bec39981dee1,
+  m_Sprite: {fileID: 1352796672176147428, guid: ec8f7a9c3c0358a41bd8bec39981dee1,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7988610526571803446}
   - component: {fileID: 8161464993350460851}
   m_Layer: 8
-  m_Name: ConnectorFixed
+  m_Name: ConnectorFixedLong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 5837079537745631063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6961655285356913633}
   m_Father: {fileID: 0}
@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectorsPositions:
-  - {x: -1.2659597, y: 0}
-  - {x: 1.2847259, y: 0}
-  icon: {fileID: -3780519841159095715, guid: ec8f7a9c3c0358a41bd8bec39981dee1, type: 3}
+  - {x: -2.444309, y: 0}
+  - {x: 2.463076, y: -0.17786407}
+  icon: {fileID: 1352796672176147428, guid: ec8f7a9c3c0358a41bd8bec39981dee1, type: 3}
   sourcePrefab: {fileID: 0}
   maxDragDistance: 0.25
 --- !u!50 &7988610526571803446
@@ -181,8 +181,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0.058959737, y: 0.32196206}
-      - {x: -1.437475, y: 0.35323694}
-      - {x: -1.4161049, y: -0.3142793}
+      - {x: -2.7241116, y: 0.42804155}
+      - {x: -2.67282, y: -0.17963113}
       - {x: 0.08288294, y: -0.33733857}
-      - {x: 1.4058527, y: -0.47736794}
-      - {x: 1.4595847, y: 0.32375705}
+      - {x: 2.797215, y: -0.49232903}
+      - {x: 2.6115737, y: 0.23399162}

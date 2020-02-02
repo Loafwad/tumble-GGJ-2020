@@ -1028,6 +1028,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6052135071765073606, guid: 965481d415a2d7f4c9aa87f959e66c03,
         type: 3}
+      propertyPath: connectorInfoList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052135071765073606, guid: 965481d415a2d7f4c9aa87f959e66c03,
+        type: 3}
       propertyPath: connectorInfoList.Array.data[0].amount
       value: 2
       objectReference: {fileID: 0}
