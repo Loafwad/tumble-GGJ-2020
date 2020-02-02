@@ -68,6 +68,7 @@ public class ConnectorRope : ConnectorBase
 		SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
 		spriteRenderer.sprite = closingSprite;
 		spriteRenderer.sortingOrder = 1;
+		spriteRenderer.sortingLayerName = "Connector";
 		gameObject.transform.parent = transform;
 	}
 

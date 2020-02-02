@@ -79,6 +79,7 @@ public class ConnectorBase : MonoBehaviour
 				(connectorState == ConnectorState.Fixed || connectorState == ConnectorState.FixedPartially) )
 			{
 				originalPosRot = new PosRot(transform);
+				ConnectorController.instance.activeConnector = null;
 				if (LevelController.instance.simulationRunning)
 				{
 					runtimeCreated = true;
