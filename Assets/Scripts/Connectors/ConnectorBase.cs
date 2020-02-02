@@ -52,9 +52,14 @@ public class ConnectorBase : MonoBehaviour
 	{
 		if(!run && runtimeCreated)
 		{
-			LevelController.instance.RegisterConnector(this, false);
-			Destroy(this.gameObject);
+			DestroySelf();
 		}
+	}
+
+	public virtual void DestroySelf()
+	{
+		LevelController.instance.RegisterConnector(this, false);
+		Destroy(this.gameObject);
 	}
 
 	protected RaycastHit2D RaycastAgainstTheScreen(Vector2 worldPosition)
@@ -110,6 +115,12 @@ public class ConnectorBase : MonoBehaviour
 		{
 			TryToFix(Input.mousePosition, false);
 			triedToFix = true;
+		}
+
+		if(Input.GetMouseButtonDown(1))
+		{
+			ConnectorController.instance.PushBackLastConnector();
+			DestroySelf();
 		}
 
 		if (triedToFix && connectorState == ConnectorState.Fixed)

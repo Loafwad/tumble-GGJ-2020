@@ -9,18 +9,35 @@ public class ButtonConnector : MonoBehaviour
 	public GameObject textElement;
 	public int id;
 
+	public void RefreshText(bool decrement = false)
+	{
+		int upcommingAmmout = ConnectorController.instance.connectorInfoListCurrent[id].amount;
+		if(decrement)
+		{
+			--upcommingAmmout;
+		}
+		// Check if we are about to use the last one
+		//if (upcommingAmmout == 0)
+		//{
+		//	UIHelper.instance.RemoveContainer(id);
+		//}
+		if(upcommingAmmout > 0)
+		{
+			textElement.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = upcommingAmmout.ToString();
+		}
+
+	}
+
     public void ConnectorMouseClick()
 	{
-		ConnectorController.instance.InstantiateConnector(id);
-		int x;
-		x = ConnectorController.instance.connectorInfoListCurrent[id].amount;
-		if (x <= 0)
+		bool wasRemovedFromList = ConnectorController.instance.InstantiateConnector(id);
+		if(!wasRemovedFromList)
 		{
-			UIHelper.instance.RemoveContainer(id);
+			RefreshText();
 		}
 		else
 		{
-			textElement.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = x.ToString();
+			UIHelper.instance.RemoveContainer(id);
 		}
 	}
 }

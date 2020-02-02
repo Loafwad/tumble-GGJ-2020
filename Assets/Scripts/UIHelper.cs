@@ -50,7 +50,7 @@ public class UIHelper : Singleton<UIHelper>
 		containerList = new List<GameObject>();
 		winLevelScreen.SetActive(false);
 		failLevelScreen.SetActive(false);
-		GetAmount();
+		SpawnUIContainers();
 	}
 
 	public void UpdateAmount()
@@ -58,7 +58,7 @@ public class UIHelper : Singleton<UIHelper>
 		UiContainer.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = curAmount.ToString();
 	}
 
-	public void SpawnUIContainers(int id)
+	public void SpawnUIContainer(int id)
 	{
 		GameObject newElement = Instantiate(UiContainer, canvas.transform.Find("Background-Left"));
 		containerList.Add(newElement);
@@ -68,15 +68,41 @@ public class UIHelper : Singleton<UIHelper>
 	public void RemoveContainer(int id)
 	{
 		Destroy(containerList[id]);
+		containerList.RemoveAt(id);
+
+		for (int i = 0; i < containerList.Count; ++i)
+		{
+			ButtonConnector nextButton = containerList[i].GetComponent<ButtonConnector>();
+			nextButton.id = i;
+		}
 	}
 
-	public void GetAmount()
+	public void RefreshContainers()
+	{
+		int missingContainersNumber = ConnectorController.instance.connectorInfoListCurrent.Count - containerList.Count;
+		if (missingContainersNumber > 0)
+		{
+			for (int i = 0; i < missingContainersNumber; ++i)
+			{
+				SpawnUIContainer(ConnectorController.instance.connectorInfoListCurrent[i].amount - 1 + i);
+			}
+		}
+
+		for (int i = 0; i < containerList.Count; ++i)
+		{
+			ButtonConnector nextButton = containerList[i].GetComponent<ButtonConnector>();
+			nextButton.id = i;
+			nextButton.RefreshText();
+		}
+	}
+
+	public void SpawnUIContainers()
 	{
 		for (int i = 0; i < ConnectorController.instance.connectorInfoListCurrent.Count; i++)
 		{
 			curAmount = ConnectorController.instance.connectorInfoListCurrent[i].amount;
 			UiContainer.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = curAmount.ToString();
-			SpawnUIContainers(i);
+			SpawnUIContainer(i);
 		}
 	}
 

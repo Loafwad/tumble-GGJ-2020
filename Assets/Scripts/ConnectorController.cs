@@ -16,6 +16,8 @@ public class ConnectorController : Singleton<ConnectorController>
 	public List<ConnectorInfo> connectorInfoListCurrent;
 	[HideInInspector]
 	public ConnectorBase activeConnector = null;
+	[HideInInspector]
+	public GameObject lastConnectorPrefabInstanciated = null;
 
 	// Start is called before the first frame update
 	void Start()
@@ -26,16 +28,48 @@ public class ConnectorController : Singleton<ConnectorController>
 	{
 		if (activeConnector == null)
 		{
+			lastConnectorPrefabInstanciated = connectorInfoListCurrent[id].item;
 			Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			newPosition.z = 0f;
-			activeConnector = Instantiate(connectorInfoListCurrent[id].item.gameObject, newPosition, Quaternion.identity).GetComponent<ConnectorBase>();
+			activeConnector = Instantiate(lastConnectorPrefabInstanciated, newPosition, Quaternion.identity).GetComponent<ConnectorBase>();
 			connectorInfoListCurrent[id].amount--;
 			activeConnector.StartDragging();
 			UIHelper.instance.UpdateAmount();
 
-			return true;
+			if (connectorInfoListCurrent[id].amount == 0)
+			{
+				connectorInfoListCurrent.RemoveAt(id);
+				return true;
+			}
 		}
 		return false;
+	}
+
+	public void PushBackLastConnector()
+	{
+		if(lastConnectorPrefabInstanciated != null)
+		{
+			bool foundItem = false;
+			for (int i = 0; i < connectorInfoListCurrent.Count; ++i)
+			{
+				ConnectorInfo nextInfo = connectorInfoListCurrent[i];
+				if(nextInfo.item == lastConnectorPrefabInstanciated)
+				{
+					++nextInfo.amount;
+					foundItem = true;
+					break;
+				}
+			}
+			if(!foundItem)
+			{
+				ConnectorInfo newInfo = new ConnectorInfo();
+				newInfo.amount = 1;
+				newInfo.item = lastConnectorPrefabInstanciated;
+				connectorInfoListCurrent.Add(newInfo);
+			}
+
+			UIHelper.instance.RefreshContainers();
+		}
 	}
 
 	void Update()
