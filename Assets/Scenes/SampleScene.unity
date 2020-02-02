@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 163139223, guid: 124ac2a891435994e805c4f3dd2d050a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 205984454677968162, guid: 124ac2a891435994e805c4f3dd2d050a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -156,12 +160,12 @@ PrefabInstance:
     - target: {fileID: 205984454677968162, guid: 124ac2a891435994e805c4f3dd2d050a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.47953442
       objectReference: {fileID: 0}
     - target: {fileID: 205984454677968162, guid: 124ac2a891435994e805c4f3dd2d050a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.87752306
       objectReference: {fileID: 0}
     - target: {fileID: 205984454677968162, guid: 124ac2a891435994e805c4f3dd2d050a,
         type: 3}
@@ -181,7 +185,7 @@ PrefabInstance:
     - target: {fileID: 205984454677968162, guid: 124ac2a891435994e805c4f3dd2d050a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 57.31
       objectReference: {fileID: 0}
     - target: {fileID: 205984454677968162, guid: 124ac2a891435994e805c4f3dd2d050a,
         type: 3}
@@ -428,6 +432,7 @@ GameObject:
   - component: {fileID: 2050323461}
   - component: {fileID: 2050323460}
   - component: {fileID: 2050323462}
+  - component: {fileID: 2050323463}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -447,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6b92036e2409846b53095b3035419b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsToPass: 0.5
+  secondsToPass: 10
 --- !u!4 &2050323461
 Transform:
   m_ObjectHideFlags: 0
@@ -474,8 +479,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123fea205937dd94eb31b8382c65f7af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectors:
-  - {fileID: 5837079537745631063, guid: dc8d12696bf171841a117c06248d814c, type: 3}
+  connectorInfoList:
+  - item: {fileID: 5837079537745631063, guid: dc8d12696bf171841a117c06248d814c, type: 3}
+    amount: 1
+  - item: {fileID: 3092201148421923547, guid: 6b792a84e0ef68848a4f57c9cf2744a7, type: 3}
+    amount: 2
+  connectorInfoListCurrent: []
+--- !u!114 &2050323463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050323459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514042de6f9915e4883cf41b003a6d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2102261696
 PrefabInstance:
   m_ObjectHideFlags: 0
