@@ -126,6 +126,7 @@ public class LevelController : Singleton<LevelController>
 		{
 			RunSimulation(!_simulationRunning);
 			UIHelper.instance.ResetWinOrFailUI();
+			UIHelper.instance.ChangePlayButtonSprite();
 		}
 	}
 }

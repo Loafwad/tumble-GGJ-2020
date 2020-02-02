@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &564365597657419722
+--- !u!1 &2436844331783630030
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,36 +8,36 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 768616703533283553}
-  - component: {fileID: 7011725950403151974}
+  - component: {fileID: 6961655285356913633}
+  - component: {fileID: 6221894508070850382}
   m_Layer: 8
-  m_Name: Sprite
+  m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &768616703533283553
+--- !u!4 &6961655285356913633
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564365597657419722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_GameObject: {fileID: 2436844331783630030}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7332521, w: 0.6799569}
+  m_LocalPosition: {x: 0.005, y: 0.025, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 4472414578136396979}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7011725950403151974
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -94.31901}
+--- !u!212 &6221894508070850382
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564365597657419722}
+  m_GameObject: {fileID: 2436844331783630030}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -69,13 +69,14 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: -3780519841159095715, guid: ec8f7a9c3c0358a41bd8bec39981dee1,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.94, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -92,7 +93,7 @@ GameObject:
   - component: {fileID: 4472414578136396979}
   - component: {fileID: 3460417259536730961}
   - component: {fileID: 7988610526571803446}
-  - component: {fileID: 6025887909280256966}
+  - component: {fileID: 8161464993350460851}
   m_Layer: 8
   m_Name: ConnectorFixed
   m_TagString: Untagged
@@ -109,9 +110,9 @@ Transform:
   m_GameObject: {fileID: 5837079537745631063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
-  - {fileID: 768616703533283553}
+  - {fileID: 6961655285356913633}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -128,8 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectorsPositions:
-  - {x: -0.4, y: 0}
-  - {x: 0.4, y: 0}
+  - {x: -1.2659597, y: 0}
+  - {x: 1.2847259, y: 0}
+  icon: {fileID: -3780519841159095715, guid: ec8f7a9c3c0358a41bd8bec39981dee1, type: 3}
   maxDragDistance: 0.25
 --- !u!50 &7988610526571803446
 Rigidbody2D:
@@ -152,8 +154,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &6025887909280256966
-BoxCollider2D:
+--- !u!60 &8161464993350460851
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -167,14 +169,19 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.058959737, y: 0.32196206}
+      - {x: -1.437475, y: 0.35323694}
+      - {x: -1.4161049, y: -0.3142793}
+      - {x: 0.08288294, y: -0.33733857}
+      - {x: 1.4058527, y: -0.47736794}
+      - {x: 1.4595847, y: 0.32375705}
