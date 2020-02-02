@@ -35,6 +35,16 @@ public class UIHelper : Singleton<UIHelper>
         }
     }
 
+	public void LoadNextLevel()
+	{
+		LevelController.instance.GetComponent<LevelManager>().NextScene();
+	}
+
+	public void Restart()
+	{
+		LevelController.instance.RunSimulation(false);
+	}
+
 	private void Start()
 	{
 		containerList = new List<GameObject>();

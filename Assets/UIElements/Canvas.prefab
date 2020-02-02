@@ -279,6 +279,8 @@ GameObject:
   - component: {fileID: 1408048703906681020}
   - component: {fileID: 1408048703906681023}
   - component: {fileID: 1408048703906681022}
+  - component: {fileID: 2952763035862191577}
+  - component: {fileID: 6577863543455004304}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -381,7 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8227400fb959222429c36f59dfc9d29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelController: {fileID: 0}
   buttonText: {fileID: 1408048703881586282}
   canvas: {fileID: 1408048703906681010}
   UiContainer: {fileID: 2710832532422161391, guid: a2b4d545ce4371447b7d73073689c1ba,
@@ -420,6 +421,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textElement: {fileID: 0}
   id: 0
+--- !u!114 &2952763035862191577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408048703906681009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &6577863543455004304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408048703906681009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &1408048703915608307
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,8 +573,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: NextScene
+      - m_Target: {fileID: 1408048703906681020}
+        m_MethodName: LoadNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1752,9 +1787,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: RunSimulation
-        m_Mode: 6
+      - m_Target: {fileID: 1408048703906681020}
+        m_MethodName: Restart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
