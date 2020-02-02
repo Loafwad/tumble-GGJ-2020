@@ -6,21 +6,26 @@ using UnityEngine.EventSystems;
 
 public class UIHelper : Singleton<UIHelper>
 {
-    public LevelController levelController;
     public TextMeshProUGUI buttonText;
 
 	public Canvas canvas;
 	public GameObject UiContainer;
 	protected int curAmount;
 	private List<GameObject> containerList;
-	public GameObject winLevelUIObject;
-	public GameObject failLevelUIObject;
+	public GameObject winLevelScreen;
+	public Animator FailTextAnimation;
+	public Animator FailButtonAnimation;
+
+	public Animator WinTextAnimation;
+	public Animator WinButtonAnimation;
+
+	public GameObject failLevelScreen;
 
 	//play & stop button
 	public void PlayButton()
     {
-        levelController.RunSimulation(!levelController.simulationRunning);
-        if (!levelController.simulationRunning)
+		LevelController.instance.RunSimulation(!LevelController.instance.simulationRunning);
+        if (!LevelController.instance.simulationRunning)
         {
             buttonText.text = "Play";
         }
@@ -33,8 +38,8 @@ public class UIHelper : Singleton<UIHelper>
 	private void Start()
 	{
 		containerList = new List<GameObject>();
-		winLevelUIObject.SetActive(false);
-		failLevelUIObject.SetActive(false);
+		winLevelScreen.SetActive(false);
+		failLevelScreen.SetActive(false);
 		GetAmount();
 	}
 
@@ -68,19 +73,23 @@ public class UIHelper : Singleton<UIHelper>
 	//couldn't think of a better solution
 	public void DisplayWin()
 	{
-		winLevelUIObject.SetActive(true);
-		failLevelUIObject.SetActive(false);
+		winLevelScreen.SetActive(true);
+		failLevelScreen.SetActive(false);
+		WinButtonAnimation.GetComponent<Animator>().SetTrigger("PlayAnimation");
+		WinTextAnimation.GetComponent<Animator>().SetTrigger("PlayAnimation");
 	}
 
 	public void DisplayFail()
 	{
-		winLevelUIObject.SetActive(false);
-		failLevelUIObject.SetActive(true);
+		winLevelScreen.SetActive(false);
+		failLevelScreen.SetActive(true);
+		FailButtonAnimation.GetComponent<Animator>().SetTrigger("PlayAnimation");
+		FailTextAnimation.GetComponent<Animator>().SetTrigger("PlayAnimation");
 	}
-	
+
 	public void ResetWinOrFailUI()
 	{
-		winLevelUIObject.SetActive(false);
-		failLevelUIObject.SetActive(false);
+		winLevelScreen.SetActive(false);
+		failLevelScreen.SetActive(false);
 	}
 }

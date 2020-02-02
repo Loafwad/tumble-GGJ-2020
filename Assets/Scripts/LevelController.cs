@@ -76,11 +76,10 @@ public class LevelController : Singleton<LevelController>
 		{
 			UIHelper.instance.DisplayWin();
 			gameplayStatus = GameplayStatus.Success;
-			Invoke("levelManager.NextScene", 2);
 			Debug.Log("Success");
 		}
 
-		levelManager.NextScene();
+		//levelManager.NextScene();
 	}
 
 	public void RunSimulation(bool run)
