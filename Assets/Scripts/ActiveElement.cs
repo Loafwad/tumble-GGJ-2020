@@ -23,7 +23,7 @@ public class ActiveElement : MonoBehaviour
 		originalPosition = gameObject.transform.position;
 		originalRotation = gameObject.transform.rotation;
 		_rigidbody2DCached = GetComponent<Rigidbody2D>();
-		rigidbody2DCached.gravityScale = 0f;
+		rigidbody2DCached.constraints = RigidbodyConstraints2D.FreezeAll;
 		LevelController.instance.RegisterActiveElement(this);
 	}
 
@@ -33,14 +33,15 @@ public class ActiveElement : MonoBehaviour
 		gameObject.transform.rotation = originalRotation;
 		rigidbody2DCached.velocity = Vector2.zero;
 		rigidbody2DCached.angularVelocity = 0f;
-		rigidbody2DCached.gravityScale = 0f;
+		rigidbody2DCached.constraints = RigidbodyConstraints2D.FreezeAll;
 	}
 
 	public virtual void RunSimulation(bool run)
 	{
 		if(run)
 		{
-			rigidbody2DCached.gravityScale = 1.0f;
+			rigidbody2DCached.constraints = RigidbodyConstraints2D.None;
+			rigidbody2DCached.WakeUp();
 		}
 		else
 		{

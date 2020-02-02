@@ -17,13 +17,17 @@ public class ConnectorFixed : ConnectorBase
 		}
 	}
 
+	public void Awake()
+	{
+		_rigidbody2DCached = GetComponent<Rigidbody2D>();
+	}
+
 	// Start is called before the first frame update
 	public override void Start()
     {
 		base.Start();
 
-		_rigidbody2DCached = GetComponent<Rigidbody2D>();
-		rigidbody2DCached.gravityScale = 1f;
+		rigidbody2DCached.constraints = RigidbodyConstraints2D.FreezeAll;
 	}
 
     // Update is called once per frame
@@ -59,23 +63,18 @@ public class ConnectorFixed : ConnectorBase
 
 	public override void RunSimulation(bool run)
 	{
+		base.RunSimulation(run);
+
 		if(run)
 		{
-			rigidbody2DCached.gravityScale = 1f;
-			rigidbody2DCached.simulated = true;
+			rigidbody2DCached.constraints = RigidbodyConstraints2D.None;
+			rigidbody2DCached.WakeUp();
 		}
 		else
 		{
-			if(runtimeCreated)
-			{
-				LevelController.instance.RegisterConnector(this, false);
-				Destroy(this.gameObject);
-				return;
-			}
-
-			transform.position = originalPosition;
-			transform.rotation = originalRotation;
-			rigidbody2DCached.gravityScale = 0f;
+			transform.position = originalPosRot.pos;
+			transform.rotation = originalPosRot.rot;
+			rigidbody2DCached.constraints = RigidbodyConstraints2D.FreezeAll;
 			rigidbody2DCached.velocity = Vector2.zero;
 			rigidbody2DCached.angularVelocity = 0f;
 		}
@@ -100,11 +99,7 @@ public class ConnectorFixed : ConnectorBase
 			for (int i = 0; i < connectorsPositions.Count; ++i)
 			{
 				Vector2 connectorPosition = transform.TransformPoint(connectorsPositions[i]);
-				Vector3 hitPosition = new Vector3(connectorPosition.x, connectorPosition.y, 0f);
-				hitPosition.z = Camera.main.transform.position.z;
-
-				Ray ray = new Ray(hitPosition, Vector3.forward);
-				RaycastHit2D rayHit = Physics2D.GetRayIntersection(ray, 10f);
+				RaycastHit2D rayHit = RaycastAgainstTheScreen(connectorPosition);
 				if (rayHit.collider != null)
 				{
 					raycastHits.Add(rayHit);
@@ -116,12 +111,6 @@ public class ConnectorFixed : ConnectorBase
 				Collider2D nextCollider = raycastHits[i].collider;
 				FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
 				joint.connectedBody = nextCollider.attachedRigidbody;
-			}
-
-			if (LevelController.instance.simulationRunning)
-			{
-				runtimeCreated = true;
-				RunSimulation(true);
 			}
 
 			if (raycastHits.Count > 0)

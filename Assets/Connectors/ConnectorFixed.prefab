@@ -128,9 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectorsPositions:
-  - {x: -0.25, y: 0}
-  - {x: 0.25, y: 0}
-  maxDragDistance: 1
+  - {x: -0.4, y: 0}
+  - {x: 0.4, y: 0}
+  maxDragDistance: 0.25
 --- !u!50 &7988610526571803446
 Rigidbody2D:
   serializedVersion: 4
@@ -140,7 +140,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5837079537745631063}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1

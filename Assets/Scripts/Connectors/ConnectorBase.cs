@@ -11,12 +11,30 @@ public enum ConnectorState
 	Rotating = 4
 }
 
+public class PosRot
+{
+	public PosRot(Vector3 pos, Quaternion rot)
+	{
+		this.pos = pos;
+		this.rot = rot;
+	}
+	public PosRot(Transform transform)
+	{
+		this.pos = transform.position;
+		this.rot = transform.rotation;
+	}
+
+	public PosRot() { }
+
+	public Vector3 pos;
+	public Quaternion rot;
+}
+
 public class ConnectorBase : MonoBehaviour
 {
 	public List<Vector2> connectorsPositions;
 	protected ConnectorState connectorState = ConnectorState.Inactivated;
-	protected Vector2 originalPosition;
-	protected Quaternion originalRotation;
+	protected PosRot originalPosRot;
 	protected bool runtimeCreated = false;
 
 	public virtual void Start()
@@ -31,8 +49,21 @@ public class ConnectorBase : MonoBehaviour
 
 	public virtual void RunSimulation(bool run)
 	{
-		
+		if(!run && runtimeCreated)
+		{
+			LevelController.instance.RegisterConnector(this, false);
+			Destroy(this.gameObject);
+		}
 	}
+
+	protected RaycastHit2D RaycastAgainstTheScreen(Vector2 worldPosition)
+	{
+		Vector3 hitPosition = new Vector3(worldPosition.x, worldPosition.y, 0f);
+		hitPosition.z = Camera.main.transform.position.z;
+
+		Ray ray = new Ray(hitPosition, Vector3.forward);
+		return Physics2D.GetRayIntersection(ray, 10f, LayerMask.GetMask("ActiveElement"));
+}
 
 	// Hit position, if the input was pressed or released, if it in screen or world coordinates
 	public void TryToFix(Vector2 position, bool Pressed = true, bool mouseCoordinates = true)
@@ -46,8 +77,12 @@ public class ConnectorBase : MonoBehaviour
 			if(	prevState == ConnectorState.Dragging &&
 				(connectorState == ConnectorState.Fixed || connectorState == ConnectorState.FixedPartially) )
 			{
-				originalPosition = transform.position;
-				originalRotation = transform.rotation;
+				originalPosRot = new PosRot(transform);
+				if (LevelController.instance.simulationRunning)
+				{
+					runtimeCreated = true;
+					RunSimulation(true);
+				}
 			}
 		}
 	}
