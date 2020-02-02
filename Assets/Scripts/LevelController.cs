@@ -64,6 +64,7 @@ public class LevelController : Singleton<LevelController>
 	{
 		if (gameplayStatus == GameplayStatus.Running)
 		{
+			UIHelper.instance.DisplayFail();
 			gameplayStatus = GameplayStatus.Failed;
 			Debug.Log("Fail");
 		}
@@ -73,7 +74,9 @@ public class LevelController : Singleton<LevelController>
 	{
 		if (gameplayStatus == GameplayStatus.Running)
 		{
+			UIHelper.instance.DisplayWin();
 			gameplayStatus = GameplayStatus.Success;
+			Invoke("levelManager.NextScene", 2);
 			Debug.Log("Success");
 		}
 
@@ -123,6 +126,7 @@ public class LevelController : Singleton<LevelController>
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			RunSimulation(!_simulationRunning);
+			UIHelper.instance.ResetWinOrFailUI();
 		}
 	}
 }

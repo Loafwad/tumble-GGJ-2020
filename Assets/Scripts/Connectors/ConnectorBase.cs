@@ -33,6 +33,7 @@ public class PosRot
 public class ConnectorBase : MonoBehaviour
 {
 	public List<Vector2> connectorsPositions;
+	public Sprite icon;
 	protected ConnectorState connectorState = ConnectorState.Inactivated;
 	protected PosRot originalPosRot;
 	protected bool runtimeCreated = false;
