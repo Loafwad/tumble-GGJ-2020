@@ -13,6 +13,8 @@ public class UIHelper : Singleton<UIHelper>
 	public GameObject UiContainer;
 	protected int curAmount;
 	private List<GameObject> containerList;
+	public GameObject winLevelUIObject;
+	public GameObject failLevelUIObject;
 
 	//play & stop button
 	public void PlayButton()
@@ -31,6 +33,8 @@ public class UIHelper : Singleton<UIHelper>
 	private void Start()
 	{
 		containerList = new List<GameObject>();
+		winLevelUIObject.SetActive(false);
+		failLevelUIObject.SetActive(false);
 		GetAmount();
 	}
 
@@ -61,5 +65,22 @@ public class UIHelper : Singleton<UIHelper>
 		}
 	}
 
+	//couldn't think of a better solution
+	public void DisplayWin()
+	{
+		winLevelUIObject.SetActive(true);
+		failLevelUIObject.SetActive(false);
+	}
+
+	public void DisplayFail()
+	{
+		winLevelUIObject.SetActive(false);
+		failLevelUIObject.SetActive(true);
+	}
 	
+	public void ResetWinOrFailUI()
+	{
+		winLevelUIObject.SetActive(false);
+		failLevelUIObject.SetActive(false);
+	}
 }
