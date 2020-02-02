@@ -290,6 +290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textElement: {fileID: 2710832531865981589}
+  id: 0
+  icon: {fileID: 2710832532530230739}
 --- !u!114 &8723897279886809650
 MonoBehaviour:
   m_ObjectHideFlags: 0

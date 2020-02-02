@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class ButtonConnector : MonoBehaviour
 {
 	public GameObject textElement;
 	public int id;
+	public Image icon;
 
     public void ConnectorMouseClick()
 	{

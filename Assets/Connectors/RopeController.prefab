@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectorsPositions: []
+  icon: {fileID: -7104348961835421028, guid: a801e081e69306a4f837e7676e6ee7f6, type: 3}
   ropeElementPrefab: {fileID: 1149784459595105957, guid: b3f1c14eaaba2dd438f5d327760904c1,
     type: 3}
   closingSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

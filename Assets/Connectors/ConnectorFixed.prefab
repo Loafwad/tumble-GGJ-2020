@@ -130,6 +130,7 @@ MonoBehaviour:
   connectorsPositions:
   - {x: -0.4, y: 0}
   - {x: 0.4, y: 0}
+  icon: {fileID: -3765987848131751537, guid: a801e081e69306a4f837e7676e6ee7f6, type: 3}
   maxDragDistance: 0.25
 --- !u!50 &7988610526571803446
 Rigidbody2D:
