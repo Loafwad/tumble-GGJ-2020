@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class UIHelper : Singleton<UIHelper>
@@ -20,17 +19,13 @@ public class UIHelper : Singleton<UIHelper>
 	public Animator WinTextAnimation;
 	public Animator WinButtonAnimation;
 
-	public GameObject PlayButtonSprite;
-	public GameObject RewindButtonSprite;
-
 	public GameObject failLevelScreen;
 
 	//play & stop button
 	public void PlayButton()
     {
 		LevelController.instance.RunSimulation(!LevelController.instance.simulationRunning);
-		ChangePlayButtonSprite();
-		if (!LevelController.instance.simulationRunning)
+        if (!LevelController.instance.simulationRunning)
         {
             buttonText.text = "Play";
         }
@@ -40,18 +35,14 @@ public class UIHelper : Singleton<UIHelper>
         }
     }
 
-	public void ChangePlayButtonSprite()
+	public void LoadNextLevel()
 	{
-		if (LevelController.instance.simulationRunning == false)
-		{
-			RewindButtonSprite.SetActive(true);
-			PlayButtonSprite.SetActive(false);
-		}
-		else
-		{
-			RewindButtonSprite.SetActive(false);
-			PlayButtonSprite.SetActive(true);
-		}
+		LevelController.instance.GetComponent<LevelManager>().NextScene();
+	}
+
+	public void Restart()
+	{
+		LevelController.instance.RunSimulation(false);
 	}
 
 	private void Start()
@@ -71,10 +62,7 @@ public class UIHelper : Singleton<UIHelper>
 	{
 		GameObject newElement = Instantiate(UiContainer, canvas.transform.Find("Background-Left"));
 		containerList.Add(newElement);
-		var buttonConnector = newElement.GetComponent<ButtonConnector>();
-		var connectorBase = ConnectorController.instance.connectorInfoListCurrent[id].item.GetComponent<ConnectorBase>();
-		buttonConnector.id = id;
-		buttonConnector.icon.sprite = connectorBase.icon;
+		newElement.GetComponent<ButtonConnector>().id = id;
 	}
 
 	public void RemoveContainer(int id)
@@ -113,6 +101,5 @@ public class UIHelper : Singleton<UIHelper>
 	{
 		winLevelScreen.SetActive(false);
 		failLevelScreen.SetActive(false);
-		ChangePlayButtonSprite();
 	}
 }

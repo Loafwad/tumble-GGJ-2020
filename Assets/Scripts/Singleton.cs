@@ -15,12 +15,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	{
 		get
 		{
-			if (shuttingDown)
-			{
-				Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
-					"' already destroyed. Returning null.");
-				return null;
-			}
+			//if (shuttingDown)
+			//{
+			//	Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+			//		"' already destroyed. Returning null.");
+			//	return null;
+			//}
 
 			lock (lockObject)
 			{
