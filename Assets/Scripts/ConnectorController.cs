@@ -32,6 +32,7 @@ public class ConnectorController : Singleton<ConnectorController>
 			Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			newPosition.z = 0f;
 			activeConnector = Instantiate(lastConnectorPrefabInstanciated, newPosition, Quaternion.identity).GetComponent<ConnectorBase>();
+			activeConnector.sourcePrefab = lastConnectorPrefabInstanciated;
 			connectorInfoListCurrent[id].amount--;
 			activeConnector.StartDragging();
 			UIHelper.instance.UpdateAmount();
@@ -45,30 +46,35 @@ public class ConnectorController : Singleton<ConnectorController>
 		return false;
 	}
 
+	public void PushBackConnector(GameObject connector)
+	{
+		bool foundItem = false;
+		for (int i = 0; i < connectorInfoListCurrent.Count; ++i)
+		{
+			ConnectorInfo nextInfo = connectorInfoListCurrent[i];
+			if (nextInfo.item == connector)
+			{
+				++nextInfo.amount;
+				foundItem = true;
+				break;
+			}
+		}
+		if (!foundItem)
+		{
+			ConnectorInfo newInfo = new ConnectorInfo();
+			newInfo.amount = 1;
+			newInfo.item = connector;
+			connectorInfoListCurrent.Add(newInfo);
+		}
+
+		UIHelper.instance.RefreshContainers();
+	}
+
 	public void PushBackLastConnector()
 	{
 		if(lastConnectorPrefabInstanciated != null)
 		{
-			bool foundItem = false;
-			for (int i = 0; i < connectorInfoListCurrent.Count; ++i)
-			{
-				ConnectorInfo nextInfo = connectorInfoListCurrent[i];
-				if(nextInfo.item == lastConnectorPrefabInstanciated)
-				{
-					++nextInfo.amount;
-					foundItem = true;
-					break;
-				}
-			}
-			if(!foundItem)
-			{
-				ConnectorInfo newInfo = new ConnectorInfo();
-				newInfo.amount = 1;
-				newInfo.item = lastConnectorPrefabInstanciated;
-				connectorInfoListCurrent.Add(newInfo);
-			}
-
-			UIHelper.instance.RefreshContainers();
+			PushBackConnector(lastConnectorPrefabInstanciated);
 		}
 	}
 

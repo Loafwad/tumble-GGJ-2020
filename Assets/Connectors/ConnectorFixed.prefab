@@ -132,6 +132,7 @@ MonoBehaviour:
   - {x: -1.2659597, y: 0}
   - {x: 1.2847259, y: 0}
   icon: {fileID: -3780519841159095715, guid: ec8f7a9c3c0358a41bd8bec39981dee1, type: 3}
+  sourcePrefab: {fileID: 0}
   maxDragDistance: 0.25
 --- !u!50 &7988610526571803446
 Rigidbody2D:

@@ -40,6 +40,9 @@ public class ConnectorBase : MonoBehaviour
 	protected PosRot originalPosRot;
 	protected bool runtimeCreated = false;
 
+	[HideInInspector]
+	public GameObject sourcePrefab;
+
 	public virtual void Start()
 	{
 		LevelController.instance.RegisterConnector(this);
@@ -54,6 +57,8 @@ public class ConnectorBase : MonoBehaviour
 	{
 		if(!run && runtimeCreated)
 		{
+			ConnectorInfo info = new ConnectorInfo();
+			ConnectorController.instance.PushBackConnector(sourcePrefab);
 			DestroySelf();
 		}
 	}
